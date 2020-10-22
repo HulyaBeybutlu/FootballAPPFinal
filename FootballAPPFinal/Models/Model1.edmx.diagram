@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="55e5132650b147fc9052d70a722a51bb" Name="Diagram1">
+        <EntityTypeShape EntityType="FootballAppDBModel.Admin" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Comment_Report" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Comment" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Customer" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Reservation" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Room" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Stadium" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Task" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FootballAppDBModel.Worker" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Comment_Report_Comments" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Comment_Report_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Comments_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Reservations_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Tasks_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Reservations_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Reservations_Stadiums" ManuallyRouted="false" />
+        <AssociationConnector Association="FootballAppDBModel.FK_Reservations_Workers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
