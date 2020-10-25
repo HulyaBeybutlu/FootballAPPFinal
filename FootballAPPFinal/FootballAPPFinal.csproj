@@ -181,6 +181,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\reservation-icon-29785.png" />
     <None Include="Resources\Custom-Icon-Design-Flatastic-8-Go-back.ico" />
     <None Include="Resources\Hopstarter-Sleek-Xp-Basic-Close-2.ico" />
   </ItemGroup>

@@ -119,5 +119,15 @@ namespace FootballAPPFinal.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reservation_icon_29785 {
+            get {
+                object obj = ResourceManager.GetObject("reservation-icon-29785", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
