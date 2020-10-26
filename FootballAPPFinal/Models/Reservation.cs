@@ -15,10 +15,9 @@ namespace FootballAPPFinal.Models
     public partial class Reservation
     {
         public int ID { get; set; }
-        public int CustomerID { get; set; }
+        public Nullable<int> CustomerID { get; set; }
         public int StadiumID { get; set; }
         public int RoomID { get; set; }
-        public int WorkerID { get; set; }
         public System.DateTime ResStartDate { get; set; }
         public System.DateTime ResEndDate { get; set; }
         public int Amount { get; set; }
@@ -26,6 +25,5 @@ namespace FootballAPPFinal.Models
         public virtual Customer Customer { get; set; }
         public virtual Room Room { get; set; }
         public virtual Stadium Stadium { get; set; }
-        public virtual Worker Worker { get; set; }
     }
 }

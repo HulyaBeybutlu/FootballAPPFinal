@@ -14,18 +14,9 @@ namespace FootballAPPFinal.Models
     
     public partial class Worker
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Worker()
-        {
-            this.Reservations = new HashSet<Reservation>();
-        }
-    
         public int ID { get; set; }
         public string FullName { get; set; }
         public string WorkUserName { get; set; }
         public string WorkPassword { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

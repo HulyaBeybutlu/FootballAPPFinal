@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FootballAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FootballAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,10 +44,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
           <Property Name="StadiumID" Type="int" Nullable="false" />
           <Property Name="RoomID" Type="int" Nullable="false" />
-          <Property Name="WorkerID" Type="int" Nullable="false" />
           <Property Name="ResStartDate" Type="datetime" Nullable="false" />
           <Property Name="ResEndDate" Type="datetime" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
@@ -66,7 +65,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StNumber" Type="int" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Tasks">
@@ -126,7 +124,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservations_Customers">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
           <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -158,18 +156,6 @@
             </Principal>
             <Dependent Role="Reservations">
               <PropertyRef Name="StadiumID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reservations_Workers">
-          <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
-          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Reservations">
-              <PropertyRef Name="WorkerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -219,16 +205,13 @@
             <End Role="Stadiums" EntitySet="Stadiums" />
             <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reservations_Workers" Association="Self.FK_Reservations_Workers">
-            <End Role="Workers" EntitySet="Workers" />
-            <End Role="Reservations" EntitySet="Reservations" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tasks_Customers" Association="Self.FK_Tasks_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FootballAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -278,17 +261,15 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" />
           <Property Name="StadiumID" Type="Int32" Nullable="false" />
           <Property Name="RoomID" Type="Int32" Nullable="false" />
-          <Property Name="WorkerID" Type="Int32" Nullable="false" />
           <Property Name="ResStartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ResEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Reservations_Customers" FromRole="Reservations" ToRole="Customers" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Reservations_Rooms" FromRole="Reservations" ToRole="Rooms" />
           <NavigationProperty Name="Stadium" Relationship="Self.FK_Reservations_Stadiums" FromRole="Reservations" ToRole="Stadiums" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK_Reservations_Workers" FromRole="Reservations" ToRole="Workers" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -305,7 +286,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StNumber" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservations_Stadiums" FromRole="Stadiums" ToRole="Reservations" />
         </EntityType>
@@ -330,7 +310,6 @@
           <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WorkUserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WorkPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservations_Workers" FromRole="Workers" ToRole="Reservations" />
         </EntityType>
         <Association Name="FK_Comment_Report_Comments">
           <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
@@ -369,7 +348,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservations_Customers">
-          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -416,18 +395,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reservations_Workers">
-          <End Role="Workers" Type="Self.Worker" Multiplicity="1" />
-          <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Reservations">
-              <PropertyRef Name="WorkerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="FootballDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Comment_Report" EntityType="Self.Comment_Report" />
@@ -464,10 +431,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Reservations_Stadiums" Association="Self.FK_Reservations_Stadiums">
             <End Role="Stadiums" EntitySet="Stadiums" />
-            <End Role="Reservations" EntitySet="Reservations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reservations_Workers" Association="Self.FK_Reservations_Workers">
-            <End Role="Workers" EntitySet="Workers" />
             <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
         </EntityContainer>
@@ -518,14 +481,13 @@
           <EntitySetMapping Name="Reservations">
             <EntityTypeMapping TypeName="FootballAppDBModel.Reservation">
               <MappingFragment StoreEntitySet="Reservations">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="StadiumID" ColumnName="StadiumID" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
                 <ScalarProperty Name="ResStartDate" ColumnName="ResStartDate" />
                 <ScalarProperty Name="ResEndDate" ColumnName="ResEndDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -543,7 +505,6 @@
               <MappingFragment StoreEntitySet="Stadiums">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="StName" ColumnName="StName" />
-                <ScalarProperty Name="StNumber" ColumnName="StNumber" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
