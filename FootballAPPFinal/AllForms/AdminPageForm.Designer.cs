@@ -38,6 +38,18 @@
             this.pnReservation = new System.Windows.Forms.Panel();
             this.pnAddWorker = new System.Windows.Forms.Panel();
             this.pnStadiums = new System.Windows.Forms.Panel();
+            this.pnRooms = new System.Windows.Forms.Panel();
+            this.lblErrorRoom = new System.Windows.Forms.Label();
+            this.btnEditRoom = new System.Windows.Forms.Button();
+            this.btnDeleteRoom = new System.Windows.Forms.Button();
+            this.btnAddRoom = new System.Windows.Forms.Button();
+            this.dtgRooms = new System.Windows.Forms.DataGridView();
+            this.txtCapacity = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtRoomNum = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblErrorStadium = new System.Windows.Forms.Label();
             this.btnDeleteSt = new System.Windows.Forms.Button();
             this.btnEditSt = new System.Windows.Forms.Button();
             this.nmStPrice = new System.Windows.Forms.NumericUpDown();
@@ -62,34 +74,23 @@
             this.dtgReservations = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblErrorStadium = new System.Windows.Forms.Label();
-            this.pnRooms = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtRoomNum = new System.Windows.Forms.TextBox();
-            this.txtCapacity = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dtgRooms = new System.Windows.Forms.DataGridView();
-            this.btnAddRoom = new System.Windows.Forms.Button();
-            this.btnDeleteRoom = new System.Windows.Forms.Button();
-            this.btnEditRoom = new System.Windows.Forms.Button();
-            this.lblErrorRoom = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnReservation.SuspendLayout();
             this.pnAddWorker.SuspendLayout();
             this.pnStadiums.SuspendLayout();
+            this.pnRooms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgRooms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmStPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgStadiums)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgWorkers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgReservations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnRooms.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgRooms)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.pnRooms);
             this.panel1.Controls.Add(this.btnRooms);
             this.panel1.Controls.Add(this.btnStadiums);
             this.panel1.Controls.Add(this.btnWorkers);
@@ -211,7 +212,6 @@
             // 
             // pnStadiums
             // 
-            this.pnStadiums.Controls.Add(this.pnRooms);
             this.pnStadiums.Controls.Add(this.lblErrorStadium);
             this.pnStadiums.Controls.Add(this.btnDeleteSt);
             this.pnStadiums.Controls.Add(this.btnEditSt);
@@ -227,6 +227,151 @@
             this.pnStadiums.Size = new System.Drawing.Size(692, 514);
             this.pnStadiums.TabIndex = 8;
             this.pnStadiums.Visible = false;
+            // 
+            // pnRooms
+            // 
+            this.pnRooms.Controls.Add(this.lblErrorRoom);
+            this.pnRooms.Controls.Add(this.btnEditRoom);
+            this.pnRooms.Controls.Add(this.btnDeleteRoom);
+            this.pnRooms.Controls.Add(this.btnAddRoom);
+            this.pnRooms.Controls.Add(this.dtgRooms);
+            this.pnRooms.Controls.Add(this.txtCapacity);
+            this.pnRooms.Controls.Add(this.label12);
+            this.pnRooms.Controls.Add(this.txtRoomNum);
+            this.pnRooms.Controls.Add(this.label11);
+            this.pnRooms.Controls.Add(this.label10);
+            this.pnRooms.Location = new System.Drawing.Point(188, 48);
+            this.pnRooms.Name = "pnRooms";
+            this.pnRooms.Size = new System.Drawing.Size(692, 514);
+            this.pnRooms.TabIndex = 13;
+            // 
+            // lblErrorRoom
+            // 
+            this.lblErrorRoom.AutoSize = true;
+            this.lblErrorRoom.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorRoom.ForeColor = System.Drawing.Color.Maroon;
+            this.lblErrorRoom.Location = new System.Drawing.Point(327, 176);
+            this.lblErrorRoom.Name = "lblErrorRoom";
+            this.lblErrorRoom.Size = new System.Drawing.Size(89, 16);
+            this.lblErrorRoom.TabIndex = 13;
+            this.lblErrorRoom.Text = "Capacity";
+            this.lblErrorRoom.Visible = false;
+            // 
+            // btnEditRoom
+            // 
+            this.btnEditRoom.BackColor = System.Drawing.Color.Olive;
+            this.btnEditRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnEditRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditRoom.ForeColor = System.Drawing.Color.White;
+            this.btnEditRoom.Location = new System.Drawing.Point(325, 229);
+            this.btnEditRoom.Name = "btnEditRoom";
+            this.btnEditRoom.Size = new System.Drawing.Size(105, 51);
+            this.btnEditRoom.TabIndex = 12;
+            this.btnEditRoom.Text = "Edit";
+            this.btnEditRoom.UseVisualStyleBackColor = false;
+            this.btnEditRoom.Click += new System.EventHandler(this.btnEditRoom_Click);
+            // 
+            // btnDeleteRoom
+            // 
+            this.btnDeleteRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDeleteRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnDeleteRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRoom.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteRoom.Location = new System.Drawing.Point(499, 231);
+            this.btnDeleteRoom.Name = "btnDeleteRoom";
+            this.btnDeleteRoom.Size = new System.Drawing.Size(105, 51);
+            this.btnDeleteRoom.TabIndex = 11;
+            this.btnDeleteRoom.Text = "Delete";
+            this.btnDeleteRoom.UseVisualStyleBackColor = false;
+            this.btnDeleteRoom.Click += new System.EventHandler(this.btnDeleteRoom_Click);
+            // 
+            // btnAddRoom
+            // 
+            this.btnAddRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
+            this.btnAddRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnAddRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRoom.ForeColor = System.Drawing.Color.White;
+            this.btnAddRoom.Location = new System.Drawing.Point(325, 246);
+            this.btnAddRoom.Name = "btnAddRoom";
+            this.btnAddRoom.Size = new System.Drawing.Size(105, 51);
+            this.btnAddRoom.TabIndex = 10;
+            this.btnAddRoom.Text = "Add Room";
+            this.btnAddRoom.UseVisualStyleBackColor = false;
+            this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoom_Click);
+            // 
+            // dtgRooms
+            // 
+            this.dtgRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgRooms.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dtgRooms.Location = new System.Drawing.Point(0, 347);
+            this.dtgRooms.Name = "dtgRooms";
+            this.dtgRooms.Size = new System.Drawing.Size(692, 167);
+            this.dtgRooms.TabIndex = 9;
+            this.dtgRooms.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgRooms_RowHeaderMouseDoubleClick);
+            // 
+            // txtCapacity
+            // 
+            this.txtCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCapacity.Location = new System.Drawing.Point(33, 258);
+            this.txtCapacity.Name = "txtCapacity";
+            this.txtCapacity.Size = new System.Drawing.Size(182, 24);
+            this.txtCapacity.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Jokerman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
+            this.label12.Location = new System.Drawing.Point(28, 208);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(103, 28);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Capacity";
+            // 
+            // txtRoomNum
+            // 
+            this.txtRoomNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomNum.Location = new System.Drawing.Point(33, 130);
+            this.txtRoomNum.Name = "txtRoomNum";
+            this.txtRoomNum.Size = new System.Drawing.Size(182, 24);
+            this.txtRoomNum.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Jokerman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
+            this.label11.Location = new System.Drawing.Point(28, 80);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(155, 28);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Room Number";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Algerian", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(101)))), ((int)(((byte)(118)))));
+            this.label10.Location = new System.Drawing.Point(285, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 24);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Rooms";
+            // 
+            // lblErrorStadium
+            // 
+            this.lblErrorStadium.AutoSize = true;
+            this.lblErrorStadium.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorStadium.ForeColor = System.Drawing.Color.Maroon;
+            this.lblErrorStadium.Location = new System.Drawing.Point(367, 126);
+            this.lblErrorStadium.Name = "lblErrorStadium";
+            this.lblErrorStadium.Size = new System.Drawing.Size(126, 16);
+            this.lblErrorStadium.TabIndex = 12;
+            this.lblErrorStadium.Text = "Stadium Name";
+            this.lblErrorStadium.Visible = false;
             // 
             // btnDeleteSt
             // 
@@ -501,151 +646,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Look at Reservations";
             // 
-            // lblErrorStadium
-            // 
-            this.lblErrorStadium.AutoSize = true;
-            this.lblErrorStadium.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorStadium.ForeColor = System.Drawing.Color.Maroon;
-            this.lblErrorStadium.Location = new System.Drawing.Point(367, 126);
-            this.lblErrorStadium.Name = "lblErrorStadium";
-            this.lblErrorStadium.Size = new System.Drawing.Size(126, 16);
-            this.lblErrorStadium.TabIndex = 12;
-            this.lblErrorStadium.Text = "Stadium Name";
-            this.lblErrorStadium.Visible = false;
-            // 
-            // pnRooms
-            // 
-            this.pnRooms.Controls.Add(this.lblErrorRoom);
-            this.pnRooms.Controls.Add(this.btnEditRoom);
-            this.pnRooms.Controls.Add(this.btnDeleteRoom);
-            this.pnRooms.Controls.Add(this.btnAddRoom);
-            this.pnRooms.Controls.Add(this.dtgRooms);
-            this.pnRooms.Controls.Add(this.txtCapacity);
-            this.pnRooms.Controls.Add(this.label12);
-            this.pnRooms.Controls.Add(this.txtRoomNum);
-            this.pnRooms.Controls.Add(this.label11);
-            this.pnRooms.Controls.Add(this.label10);
-            this.pnRooms.Location = new System.Drawing.Point(0, 0);
-            this.pnRooms.Name = "pnRooms";
-            this.pnRooms.Size = new System.Drawing.Size(692, 514);
-            this.pnRooms.TabIndex = 13;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Algerian", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(101)))), ((int)(((byte)(118)))));
-            this.label10.Location = new System.Drawing.Point(285, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 24);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Rooms";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Jokerman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
-            this.label11.Location = new System.Drawing.Point(28, 80);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 28);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Room Number";
-            // 
-            // txtRoomNum
-            // 
-            this.txtRoomNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomNum.Location = new System.Drawing.Point(33, 130);
-            this.txtRoomNum.Name = "txtRoomNum";
-            this.txtRoomNum.Size = new System.Drawing.Size(182, 24);
-            this.txtRoomNum.TabIndex = 6;
-            // 
-            // txtCapacity
-            // 
-            this.txtCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCapacity.Location = new System.Drawing.Point(33, 258);
-            this.txtCapacity.Name = "txtCapacity";
-            this.txtCapacity.Size = new System.Drawing.Size(182, 24);
-            this.txtCapacity.TabIndex = 8;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Jokerman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
-            this.label12.Location = new System.Drawing.Point(28, 208);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 28);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Capacity";
-            // 
-            // dtgRooms
-            // 
-            this.dtgRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgRooms.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtgRooms.Location = new System.Drawing.Point(0, 347);
-            this.dtgRooms.Name = "dtgRooms";
-            this.dtgRooms.Size = new System.Drawing.Size(692, 167);
-            this.dtgRooms.TabIndex = 9;
-            this.dtgRooms.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgRooms_RowHeaderMouseDoubleClick);
-            // 
-            // btnAddRoom
-            // 
-            this.btnAddRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
-            this.btnAddRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnAddRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRoom.ForeColor = System.Drawing.Color.White;
-            this.btnAddRoom.Location = new System.Drawing.Point(325, 246);
-            this.btnAddRoom.Name = "btnAddRoom";
-            this.btnAddRoom.Size = new System.Drawing.Size(105, 51);
-            this.btnAddRoom.TabIndex = 10;
-            this.btnAddRoom.Text = "Add Room";
-            this.btnAddRoom.UseVisualStyleBackColor = false;
-            this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoom_Click);
-            // 
-            // btnDeleteRoom
-            // 
-            this.btnDeleteRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDeleteRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnDeleteRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteRoom.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteRoom.Location = new System.Drawing.Point(499, 231);
-            this.btnDeleteRoom.Name = "btnDeleteRoom";
-            this.btnDeleteRoom.Size = new System.Drawing.Size(105, 51);
-            this.btnDeleteRoom.TabIndex = 11;
-            this.btnDeleteRoom.Text = "Delete";
-            this.btnDeleteRoom.UseVisualStyleBackColor = false;
-            this.btnDeleteRoom.Click += new System.EventHandler(this.btnDeleteRoom_Click);
-            // 
-            // btnEditRoom
-            // 
-            this.btnEditRoom.BackColor = System.Drawing.Color.Olive;
-            this.btnEditRoom.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnEditRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditRoom.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditRoom.ForeColor = System.Drawing.Color.White;
-            this.btnEditRoom.Location = new System.Drawing.Point(325, 229);
-            this.btnEditRoom.Name = "btnEditRoom";
-            this.btnEditRoom.Size = new System.Drawing.Size(105, 51);
-            this.btnEditRoom.TabIndex = 12;
-            this.btnEditRoom.Text = "Edit";
-            this.btnEditRoom.UseVisualStyleBackColor = false;
-            this.btnEditRoom.Click += new System.EventHandler(this.btnEditRoom_Click);
-            // 
-            // lblErrorRoom
-            // 
-            this.lblErrorRoom.AutoSize = true;
-            this.lblErrorRoom.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorRoom.ForeColor = System.Drawing.Color.Maroon;
-            this.lblErrorRoom.Location = new System.Drawing.Point(327, 176);
-            this.lblErrorRoom.Name = "lblErrorRoom";
-            this.lblErrorRoom.Size = new System.Drawing.Size(89, 16);
-            this.lblErrorRoom.TabIndex = 13;
-            this.lblErrorRoom.Text = "Capacity";
-            this.lblErrorRoom.Visible = false;
-            // 
             // AdminPageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -670,14 +670,14 @@
             this.pnAddWorker.PerformLayout();
             this.pnStadiums.ResumeLayout(false);
             this.pnStadiums.PerformLayout();
+            this.pnRooms.ResumeLayout(false);
+            this.pnRooms.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgRooms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmStPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgStadiums)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgWorkers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgReservations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnRooms.ResumeLayout(false);
-            this.pnRooms.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgRooms)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

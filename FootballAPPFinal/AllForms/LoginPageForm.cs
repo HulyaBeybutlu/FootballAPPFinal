@@ -19,6 +19,25 @@ namespace FootballAPPFinal
         {
             InitializeComponent();
         }
+        #region LoginIsRemember
+        public void LoginIsRemember(string username, string password)
+        {
+            if (chRemember.Checked)
+            {
+                Properties.Settings.Default.username = username;
+                Properties.Settings.Default.password = password;
+                Properties.Settings.Default.isRemember = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.username = "";
+                Properties.Settings.Default.password = "";
+                Properties.Settings.Default.isRemember = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+        #endregion
         #region btnLogin Click
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -31,6 +50,7 @@ namespace FootballAPPFinal
                 {
                     if (selectedadmin.AdminPassword==password)
                     {
+                        LoginIsRemember(usName, password);
                         AdminPageForm admPage = new AdminPageForm();
                         admPage.ShowDialog();
                     }
@@ -64,5 +84,17 @@ namespace FootballAPPFinal
         {
             Application.Exit();
         }
+
+        #region FormLoad
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.isRemember)
+            {
+                txtUserName.Text = Properties.Settings.Default.username;
+                txtPassword.Text = Properties.Settings.Default.password;
+                chRemember.Checked = true;
+            }
+        }
+        #endregion
     }
 }

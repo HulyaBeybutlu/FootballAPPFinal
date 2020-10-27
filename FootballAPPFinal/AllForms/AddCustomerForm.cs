@@ -40,6 +40,7 @@ namespace FootballAPPFinal.AllForms
             cmbRoomNumber.Items.AddRange(db.Rooms.Select(r => r.RoomNumber.ToString()).ToArray());
         }
 
+        #region btnConfirmClick
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             string firstName = txtFirstName.Text;
@@ -104,8 +105,9 @@ namespace FootballAPPFinal.AllForms
                 lblError.Visible = true;
             }
         }
+        #endregion
 
-
+        #region cmbStNameSelectIndexChange
         private void cmbStName_SelectedIndexChanged(object sender, EventArgs e)
         {
             string stadiumName = cmbStName.Text; ;
@@ -116,5 +118,6 @@ namespace FootballAPPFinal.AllForms
                 lblAmount.Visible = true;
             }
         }
+        #endregion
     }
 }

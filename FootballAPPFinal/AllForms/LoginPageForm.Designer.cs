@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.chRemember = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblError = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.chRemember);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lblError);
@@ -65,17 +65,30 @@
             this.panel1.Size = new System.Drawing.Size(413, 411);
             this.panel1.TabIndex = 1;
             // 
-            // checkBox1
+            // btnClose
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Algerian", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.Sienna;
-            this.checkBox1.Location = new System.Drawing.Point(23, 283);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(105, 16);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Remember me?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.btnClose.BackColor = System.Drawing.Color.LightGray;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::FootballAPPFinal.Properties.Resources.Hopstarter_Sleek_Xp_Basic_Close_2;
+            this.btnClose.Location = new System.Drawing.Point(366, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(35, 32);
+            this.btnClose.TabIndex = 60;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // chRemember
+            // 
+            this.chRemember.AutoSize = true;
+            this.chRemember.Font = new System.Drawing.Font("Algerian", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chRemember.ForeColor = System.Drawing.Color.Sienna;
+            this.chRemember.Location = new System.Drawing.Point(23, 283);
+            this.chRemember.Name = "chRemember";
+            this.chRemember.Size = new System.Drawing.Size(105, 16);
+            this.chRemember.TabIndex = 6;
+            this.chRemember.Text = "Remember me?";
+            this.chRemember.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -187,19 +200,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.LightGray;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::FootballAPPFinal.Properties.Resources.Hopstarter_Sleek_Xp_Basic_Close_2;
-            this.btnClose.Location = new System.Drawing.Point(366, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 32);
-            this.btnClose.TabIndex = 60;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +213,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Page ";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -233,7 +234,7 @@
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chRemember;
         private System.Windows.Forms.Button btnClose;
     }
 }
