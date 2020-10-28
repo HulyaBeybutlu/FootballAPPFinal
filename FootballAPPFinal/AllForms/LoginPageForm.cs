@@ -60,6 +60,7 @@ namespace FootballAPPFinal
                 {
                     if (selectedworker.WorkPassword==password)
                     {
+                        LoginIsRemember(usName, password);
                         AddCustomerForm addCus = new AddCustomerForm();
                         addCus.ShowDialog();
                     }

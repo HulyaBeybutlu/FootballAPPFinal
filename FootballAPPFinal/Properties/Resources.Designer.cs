@@ -103,6 +103,16 @@ namespace FootballAPPFinal.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icons8_Ios7_Arrows_Back {
+            get {
+                object obj = ResourceManager.GetObject("Icons8-Ios7-Arrows-Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Inipagi_Job_Seeker_Room_tag {
             get {
                 object obj = ResourceManager.GetObject("Inipagi-Job-Seeker-Room-tag", resourceCulture);

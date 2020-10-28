@@ -75,6 +75,11 @@ namespace FootballAPPFinal.AllForms
                     TextBox txt = (TextBox)con;
                     txt.Text = "";
                 }
+                else if (con is NumericUpDown)
+                {
+                    NumericUpDown nm = (NumericUpDown)con;
+                    nm.Value = 0;
+                }
             }
         }
         #endregion
@@ -116,7 +121,7 @@ namespace FootballAPPFinal.AllForms
 
         }
 
-        private void btnAddWork_Click_1(object sender, EventArgs e)
+        private void btnAddWork_Click(object sender, EventArgs e)
         {
             string fullName = txtFullName.Text;
             string usName = txtUserName.Text;
@@ -133,8 +138,9 @@ namespace FootballAPPFinal.AllForms
                 db.Workers.Add(wk);
                 db.SaveChanges();
                 MessageBox.Show("Worker was added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearAllData();
                 FilldtgWorkers();
+                ClearAllData();
+
             }
             else
             {
@@ -172,8 +178,9 @@ namespace FootballAPPFinal.AllForms
                 selectedWorker.WorkUserName = userName;
                 selectedWorker.WorkPassword = password;
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgWorkers();
+                ClearAllData();
+
             }
             else
             {
@@ -201,8 +208,8 @@ namespace FootballAPPFinal.AllForms
             {
                 db.Workers.Remove(selectedWorker);
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgWorkers();
+                ClearAllData();
 
             }
         }
@@ -244,8 +251,9 @@ namespace FootballAPPFinal.AllForms
                 db.Stadiums.Add(st);
                 db.SaveChanges();
                 MessageBox.Show($"{st.StName} was added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearAllData();
                 FilldtgStadiums();
+                ClearAllData();
+
             }
             else
             {
@@ -281,8 +289,9 @@ namespace FootballAPPFinal.AllForms
                 selectedStadium.StName = stName;
                 selectedStadium.Price = stPrice;
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgStadiums();
+                ClearAllData();
+
             }
             else
             {
@@ -299,13 +308,14 @@ namespace FootballAPPFinal.AllForms
             {
                 db.Stadiums.Remove(selectedStadium);
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgStadiums();
+                ClearAllData();
+
             }
         }
         private void dtgStadiums_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            btnVisibility("edit");
+            btnVisibilityStadium("edit");
             int stID = (int)dtgStadiums.Rows[e.RowIndex].Cells[0].Value;
             selectedStadium = db.Stadiums.First(x => x.ID == stID);
             txtStName.Text = selectedStadium.StName;
@@ -347,8 +357,9 @@ namespace FootballAPPFinal.AllForms
                 db.Rooms.Add(rm);
                 db.SaveChanges();
                 MessageBox.Show("Room was added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearAllData();
                 FilldtgRooms();
+                ClearAllData();
+
             }
             else
             {
@@ -374,7 +385,7 @@ namespace FootballAPPFinal.AllForms
 
         private void btnEditRoom_Click(object sender, EventArgs e)
         {
-            btnVisibilityStadium("add");
+            btnVisibilityRoom("add");
             string roomNum = txtRoomNum.Text;
             string capacity = txtCapacity.Text;
             string password = txtPassword.Text;
@@ -383,8 +394,9 @@ namespace FootballAPPFinal.AllForms
                 selectedRoom.RoomNumber =Convert.ToInt32(roomNum);
                 selectedRoom.Capacity = Convert.ToInt32(capacity);
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgRooms();
+                ClearAllData();
+
             }
             else
             {
@@ -401,20 +413,31 @@ namespace FootballAPPFinal.AllForms
             {
                 db.Rooms.Remove(selectedRoom);
                 db.SaveChanges();
-                ClearAllData();
                 FilldtgRooms();
+                ClearAllData();
+
             }
         }
 
         private void dtgRooms_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            btnVisibility("edit");
+            btnVisibilityRoom("edit");
             int roomID = (int)dtgRooms.Rows[e.RowIndex].Cells[0].Value;
             selectedRoom = db.Rooms.First(x => x.ID == roomID);
             txtRoomNum.Text = selectedRoom.RoomNumber.ToString();
             txtCapacity.Text = selectedRoom.Capacity.ToString();
         }
+
         #endregion
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ToggleInput("Reservation");
+        }
+
+      
     }
 }
 

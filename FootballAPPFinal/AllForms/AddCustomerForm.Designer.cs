@@ -49,6 +49,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblAmount = new System.Windows.Forms.Label();
+            this.checkedListRooms = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // label10
@@ -108,6 +109,7 @@
             this.cmbRoomNumber.Name = "cmbRoomNumber";
             this.cmbRoomNumber.Size = new System.Drawing.Size(258, 26);
             this.cmbRoomNumber.TabIndex = 56;
+            this.cmbRoomNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRoomNumber_KeyPress);
             // 
             // txtPhone
             // 
@@ -267,11 +269,26 @@
             this.lblAmount.Text = "Amount";
             this.lblAmount.Visible = false;
             // 
+            // checkedListRooms
+            // 
+            this.checkedListRooms.BackColor = System.Drawing.Color.White;
+            this.checkedListRooms.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListRooms.Font = new System.Drawing.Font("Jokerman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListRooms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
+            this.checkedListRooms.FormattingEnabled = true;
+            this.checkedListRooms.Location = new System.Drawing.Point(369, 437);
+            this.checkedListRooms.Name = "checkedListRooms";
+            this.checkedListRooms.Size = new System.Drawing.Size(160, 63);
+            this.checkedListRooms.TabIndex = 61;
+            this.checkedListRooms.Visible = false;
+            this.checkedListRooms.SelectedIndexChanged += new System.EventHandler(this.checkedListRooms_SelectedIndexChanged);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 638);
+            this.Controls.Add(this.checkedListRooms);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblError);
@@ -326,5 +343,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.CheckedListBox checkedListRooms;
     }
 }

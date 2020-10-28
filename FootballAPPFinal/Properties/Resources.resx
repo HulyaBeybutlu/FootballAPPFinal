@@ -130,13 +130,16 @@
   <data name="Custom-Icon-Design-Flatastic-5-Distributor-report" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Custom-Icon-Design-Flatastic-5-Distributor-report.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="reservation-icon-29785" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reservation-icon-29785.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="person_icon_UvJ_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\person_icon_UvJ_icon.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Google-Noto-Emoji-Travel-Places-42476-stadium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Google-Noto-Emoji-Travel-Places-42476-stadium.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reservation-icon-29785" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reservation-icon-29785.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icons8-Ios7-Arrows-Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons8-Ios7-Arrows-Back.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

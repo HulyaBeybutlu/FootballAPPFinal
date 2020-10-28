@@ -26,6 +26,20 @@ namespace FootballAPPFinal.AllForms
             this.Close();
         }
 
+        public void AddRoomNumber()
+        {
+            for (int i = checkedListRooms.Items.Count - 1; i >= 0; i--)
+            {
+                int roomNum = Convert.ToInt32(checkedListRooms.Items[i]);
+                Room selectedRoom = db.Rooms.FirstOrDefault(r => r.RoomNumber == roomNum);
+                int roomID;
+                if (selectedRoom != null)
+                {
+                    roomID = selectedRoom.ID;
+                }
+                db.SaveChanges();
+            }
+        }
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
             FillcmbStName();
@@ -53,44 +67,51 @@ namespace FootballAPPFinal.AllForms
 
             int phoneNumber;
             if (Extensions.isNotEmpty(new string[]{
-                firstName,lastName,phone,stName,roomNumber
-            },string.Empty))
+                firstName,lastName,phone,stName
+            }, string.Empty))
             {
                 if (db.Rooms.Any(m => m.Capacity <= 12))
                 {
-                    if (int.TryParse(phone,out phoneNumber))
+                    if (endTime >= startTime)
                     {
-                        Room selectedRoom = db.Rooms.FirstOrDefault(r => r.RoomNumber.ToString() == roomNumber);
-                        Stadium selectedSt = db.Stadiums.FirstOrDefault(s => s.StName == stName);
-                        totalPrice = selectedSt.Price;
-
-                        int cusId = 0;
-                        Customer newCus = new Customer()
+                        if (int.TryParse(phone, out phoneNumber))
                         {
-                            FirstName=firstName,
-                            LastName=lastName,
-                            PhoneNumber=Convert.ToString(phoneNumber)
-                        };
-                        db.Customers.Add(newCus);
-                        db.SaveChanges();
+                            Room selectedRoom = db.Rooms.FirstOrDefault(r => r.RoomNumber.ToString() == roomNumber);
+                            Stadium selectedSt = db.Stadiums.FirstOrDefault(s => s.StName == stName);
+                            totalPrice = selectedSt.Price;
 
-                        Reservation rv = db.Reservations.Add(new Reservation
+                            Customer newCus = new Customer()
+                            {
+                                FirstName = firstName,
+                                LastName = lastName,
+                                PhoneNumber = Convert.ToString(phoneNumber)
+                            };
+                            db.Customers.Add(newCus);
+                            db.SaveChanges();
+
+                            Reservation rv = db.Reservations.Add(new Reservation
+                            {
+                                ResStartDate = startTime,
+                                ResEndDate = endTime,
+                                CustomerID = newCus.ID,
+                                StadiumID = selectedSt.ID,
+                                RoomID = selectedRoom.ID,
+                                Amount = (int)totalPrice
+                            });
+                            db.SaveChanges();
+                            AddRoomNumber();
+                            MessageBox.Show("Reservation was added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
                         {
-                            ResStartDate = startTime,
-                            ResEndDate=endTime,
-                            CustomerID=cusId,
-                            StadiumID=selectedSt.ID,
-                            RoomID=selectedRoom.ID,
-                            Amount=(int)totalPrice
-                        });
-                        db.SaveChanges();
-                        MessageBox.Show("Reservation was added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            lblError.Text = "Please enter correct phone number";
+                            lblError.Visible = true;
+                        }
                     }
                     else
                     {
-                        lblError.Text = "Please enter correct phone number";
+                        lblError.Text = "Enter correct time!!!";
                         lblError.Visible = true;
-                        //To select multiple items in ComboBoxAdv
                     }
                 }
                 else
@@ -105,19 +126,43 @@ namespace FootballAPPFinal.AllForms
                 lblError.Visible = true;
             }
         }
+
         #endregion
 
-        #region cmbStNameSelectIndexChange
+        #region cmbStNameSelectedIndexChange
         private void cmbStName_SelectedIndexChanged(object sender, EventArgs e)
         {
             string stadiumName = cmbStName.Text; ;
             if (stadiumName!=string.Empty)
             {
                 selectedSt = db.Stadiums.First(s => s.StName == stadiumName);
-                lblAmount.Text = selectedSt.Price + "AZN";
+                lblAmount.Text = selectedSt.Price + " AZN";
                 lblAmount.Visible = true;
             }
         }
         #endregion
+
+        private void checkedListRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = checkedListRooms.SelectedIndex;
+            if (selected != -1)
+            {
+                checkedListRooms.Items.RemoveAt(selected);
+            }
+        }
+
+        private void cmbRoomNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                checkedListRooms.Visible = true;
+                string roomNm = cmbRoomNumber.Text;
+                if (!checkedListRooms.Items.Contains(roomNm))
+                {
+                    checkedListRooms.Items.Add(roomNm, true);
+                }
+                cmbRoomNumber.Text = "";
+            }
+        }
     }
 }
